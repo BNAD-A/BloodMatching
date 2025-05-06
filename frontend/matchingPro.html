@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matching - Système de don de sang</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .card-hover:hover {
+            transform: translateY(-5px);
+            transition: transform 0.3s ease-in-out;
+        }
+        .blood-drop {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen flex">
+        <aside class="bg-red-700 text-white w-64 flex-shrink-0 fixed h-full">
+            <div class="p-6">
+                <a href="dashboardPro.html">
+                    <h1 class="text-2xl font-bold flex items-center">
+                        <i class="fas fa-tint mr-2 blood-drop"></i>
+                        DonSang
+                    </h1>
+                </a>
+                <p class="text-sm text-red-200">Espace Personnel Médical</p>
+            </div>
+            <nav class="mt-6">
+                <ul>
+                    <li>
+                        <a href="dashboardPro.html" class="block py-3 px-6 hover:bg-red-600 flex items-center">
+                            <i class="fas fa-home mr-3"></i>
+                            <span>Tableau de bord</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="rdvPro.html" class="block py-3 px-6  hover:bg-red-600 flex items-center">
+                            <i class="fas fa-calendar-alt mr-3"></i>
+                            <span>Rendez-vous</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="gestionDonneursPro.html" class="block py-3 px-6 hover:bg-red-600 flex items-center">
+                            <i class="fas fa-users mr-3"></i>
+                            <span>Gestion donneurs</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="gestionReceveursPro.html" class="block py-3 px-6 hover:bg-red-600 flex items-center">
+                            <i class="fas fa-users mr-3"></i>
+                            <span>Gestion receveurs</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="matchingPro.html" class="block py-3 px-6 bg-red-800 hover:bg-red-600 flex items-center">
+                            <i class="fas fa-random mr-3"></i>
+                            <span>Matching</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="demandesUrgentesPro.html" class="block py-3 px-6 hover:bg-red-600 flex items-center">
+                            <i class="fas fa-ambulance mr-3"></i>
+                            <span>Demandes urgentes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="login.html" class="block py-3 px-6 hover:bg-red-600 flex items-center text-red-200">
+                            <i class="fas fa-sign-out-alt mr-3"></i>
+                            <span>Déconnexion</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="ml-64 w-full">
+            <header class="bg-white shadow-sm">
+                <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+                    <h2 class="text-xl font-medium text-gray-800">Matching des Donneurs</h2>
+                    <div class="flex items-center">
+                        <div class="relative">
+                            <button class="flex items-center text-gray-700 focus:outline-none">
+                                <span>Dr. Marie Dupont</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="container mx-auto px-6 py-8">
+                <!-- Content -->
+                <div class="flex flex-col md:flex-row items-center justify-between mb-8">
+                    <div>
+                        <h3 class="text-gray-700 text-3xl font-semibold">Matching des Donneurs</h3>
+                        <p class="text-gray-500">Voici les donneurs compatibles en fonction des demandes urgentes</p>
+                    </div>
+                </div>
+
+                <!-- Matching Table -->
+                <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+                    <h4 class="text-gray-600 font-medium mb-4">Receveur : Youssef</h4>
+                    <p class="text-sm text-gray-500">Groupe sanguin : O+</p>
+                    <p class="text-sm text-gray-500">Urgence : Critique</p>
+                    <p class="text-sm text-gray-500">Région : Oulfa</p>
+
+                    <h5 class="text-gray-600 font-medium mt-6 mb-4">Liste des Donneurs Compatibles</h5>
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Donneur</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Groupe Sanguin</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Distance</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Région</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Statut</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <!-- Static data example -->
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Hicham</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">O+</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">6.5 km</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Maarif</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-green-500">Disponible</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Salim</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">O+</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">10.2 km</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Oulfa</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-orange-500">En attente</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Yassir</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">O+</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">4.8 km</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Casablanca</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-red-500">Non disponible</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

@@ -20,9 +20,11 @@
     <!-- Sidebar -->
     <aside class="bg-red-700 text-white w-64 flex-shrink-0 fixed h-full">
       <div class="p-6">
-        <h1 class="text-2xl font-bold flex items-center">
-          <i class="fas fa-tint mr-2 blood-drop"></i> DonSang
-        </h1>
+        <a href="dashboardDonneur.html">
+          <h1 class="text-2xl font-bold flex items-center">
+            <i class="fas fa-tint mr-2 blood-drop"></i> DonSang
+          </h1>
+        </a>
         <p class="text-sm text-red-200">Espace Donneur</p>
       </div>
       <nav class="mt-6">
@@ -32,7 +34,7 @@
           <li><a href="historiqueDonneur.html" class="block py-3 px-6 hover:bg-red-600 flex items-center"><i class="fas fa-history mr-3"></i><span>Historique de dons</span></a></li>
           <li><a href="impactDonDonneur.html" class="block py-3 px-6 bg-red-800 hover:bg-red-600 flex items-center"><i class="fas fa-heart mr-3"></i><span>Impact des dons</span></a></li>
           <li><a href="faqDonneur.html" class="block py-3 px-6 hover:bg-red-600 flex items-center"><i class="fas fa-question-circle mr-3"></i><span>FAQ</span></a></li>
-          <li><a href="parametres.html" class="block py-3 px-6 hover:bg-red-600 flex items-center"><i class="fas fa-cog mr-3"></i><span>Paramètres</span></a></li>
+          <li><a href="parametreDonneur.html" class="block py-3 px-6 hover:bg-red-600 flex items-center"><i class="fas fa-cog mr-3"></i><span>Paramètres</span></a></li>
           <li><a href="login.html" class="block py-3 px-6 hover:bg-red-600 flex items-center text-red-200"><i class="fas fa-sign-out-alt mr-3"></i><span>Déconnexion</span></a></li>
         </ul>
       </nav>
@@ -41,10 +43,17 @@
     <!-- Main -->
     <main class="ml-64 w-full">
       <header class="bg-white shadow-sm">
-        <div class="container mx-auto px-6 py-4">
-          <h2 class="text-xl font-medium text-gray-800">Impact des dons de sang</h2>
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h2 class="text-xl font-medium text-gray-800">Tableau de bord</h2>
+            <div class="flex items-center">
+                <div class="relative">
+                    <button class="flex items-center text-gray-700 focus:outline-none">
+                        <span>Marie Dupont</span>
+                    </button>
+                </div>
+            </div>
         </div>
-      </header>
+    </header>
 
       <div class="container mx-auto px-6 py-8">
         <div class="mb-8 text-center">

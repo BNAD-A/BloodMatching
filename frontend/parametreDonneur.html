@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paramètres Utilisateur - Système de don de sang</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .card-hover:hover {
+            transform: translateY(-5px);
+            transition: transform 0.3s ease-in-out;
+        }
+        .blood-drop {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen flex">
+        <!-- Sidebar -->
+        <aside class="bg-red-700 text-white w-64 flex-shrink-0 fixed h-full">
+            <div class="p-6">
+                <a href="dashboardDonneur.html">
+                    <h1 class="text-2xl font-bold flex items-center">
+                        <i class="fas fa-tint mr-2 blood-drop"></i>
+                        DonSang
+                    </h1>
+                </a>
+                <p class="text-sm text-red-200">Espace Donneur</p>
+            </div>
+            <nav class="mt-6">
+                <ul>
+                    <li>
+                        <a href="dashboardDonneur.html" class="block py-3 px-6 hover:bg-red-600 flex items-center">
+                            <i class="fas fa-home mr-3"></i>
+                            <span>Tableau de bord</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="rdvDonneur.html" class="block py-3 px-6 hover:bg-red-600 flex items-center">
+                            <i class="fas fa-calendar-alt mr-3"></i>
+                            <span>Mes rendez-vous</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="historiqueDonneur.html" class="block py-3 px-6 hover:bg-red-600 flex items-center">
+                            <i class="fas fa-history mr-3"></i>
+                            <span>Historique de dons</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="impactDonDonneur.html" class="block py-3 px-6 hover:bg-red-600 flex items-center">
+                            <i class="fas fa-heart mr-3"></i>
+                            <span>Impact de mes dons</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="faqDonneur.html" class="block py-3 px-6 hover:bg-red-600 flex items-center">
+                            <i class="fas fa-question-circle mr-3"></i>
+                            <span>FAQ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="parametreDonneur.html" class="block py-3 px-6 bg-red-800 hover:bg-red-600 flex items-center">
+                            <i class="fas fa-cog mr-3"></i>
+                            <span>Paramètres</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="login.html" class="block py-3 px-6 hover:bg-red-600 flex items-center text-red-200">
+                            <i class="fas fa-sign-out-alt mr-3"></i>
+                            <span>Déconnexion</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="ml-64 w-full">
+            <header class="bg-white shadow-sm">
+                <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+                    <h2 class="text-xl font-medium text-gray-800">Paramètres</h2>
+                    <div class="flex items-center">
+                        <div class="relative">
+                            <button class="flex items-center text-gray-700 focus:outline-none">
+                                <span>Marie Dupont</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="container mx-auto px-6 py-8">
+                <!-- Settings Header -->
+                <div class="flex flex-col md:flex-row items-center justify-between mb-8">
+                    <div>
+                        <h3 class="text-gray-700 text-3xl font-semibold">Mon profil</h3>
+                        <p class="text-gray-500">Consultez vos informations personnelles</p>
+                    </div>
+                </div>
+
+                <!-- Profile Information Section -->
+                <h4 class="text-gray-600 font-medium mb-4">Informations personnelles</h4>
+                <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+                    <div class="flex items-start mb-6">
+                        <div class="mr-4 flex items-center justify-center w-14 h-14 rounded-full bg-red-100 text-red-700 font-bold text-xl">
+                            O+
+                        </div>
+                        <div>
+                            <h5 class="text-lg font-medium text-gray-800">Marie Dupont</h5>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <div class="mb-4">
+                                <p class="text-sm text-gray-500 mb-1">Prénom</p>
+                                <p class="text-gray-800">Marie</p>
+                            </div>
+                            <div class="mb-4">
+                                <p class="text-sm text-gray-500 mb-1">Nom</p>
+                                <p class="text-gray-800">Dupont</p>
+                            </div>
+                            <div class="mb-4">
+                                <p class="text-sm text-gray-500 mb-1">Date de naissance</p>
+                                <p class="text-gray-800">15/05/1990</p>
+                            </div>
+                            <div class="mb-4">
+                                <p class="text-sm text-gray-500 mb-1">Groupe sanguin</p>
+                                <p class="text-gray-800">O+</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="mb-4">
+                                <p class="text-sm text-gray-500 mb-1">Email</p>
+                                <p class="text-gray-800">marie.dupont@email.com</p>
+                                <span class="inline-flex items-center mt-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                    <i class="fas fa-check-circle mr-1"></i> Vérifié
+                                </span>
+                            </div>
+                            <div class="mb-4">
+                                <p class="text-sm text-gray-500 mb-1">Téléphone</p>
+                                <p class="text-gray-800">06 12 34 56 78</p>
+                            </div>
+                            <div class="mb-4">
+                                <p class="text-sm text-gray-500 mb-1">Adresse</p>
+                                <p class="text-gray-800">12 rue de la Paix, 75010 Paris</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Donation Stats Summary -->
+                <h4 class="text-gray-600 font-medium mb-4">Résumé de vos dons</h4>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                    <div class="bg-white rounded-lg shadow-sm p-6 card-hover">
+                        <div class="flex items-center">
+                            <div class="bg-red-100 p-3 rounded-full">
+                                <i class="fas fa-tint text-red-600"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h5 class="text-gray-500 text-sm">Groupe sanguin</h5>
+                                <div class="flex items-center">
+                                    <span class="text-2xl font-bold">O+</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm p-6 card-hover">
+                        <div class="flex items-center">
+                            <div class="bg-green-100 p-3 rounded-full">
+                                <i class="fas fa-clipboard-check text-green-600"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h5 class="text-gray-500 text-sm">Total de dons</h5>
+                                <div class="flex items-center">
+                                    <span class="text-2xl font-bold">7</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm p-6 card-hover">
+                        <div class="flex items-center">
+                            <div class="bg-blue-100 p-3 rounded-full">
+                                <i class="fas fa-calendar-day text-blue-600"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h5 class="text-gray-500 text-sm">Prochain don possible</h5>
+                                <div class="flex items-center">
+                                    <span class="text-2xl font-bold">15 mai 2025</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

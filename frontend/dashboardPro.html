@@ -35,45 +35,39 @@
             <nav class="mt-6">
                 <ul>
                     <li>
-                        <a href="#" class="block py-3 px-6 bg-red-800 hover:bg-red-600 flex items-center">
+                        <a href="dashboardPro.html" class="block py-3 px-6 bg-red-800 hover:bg-red-600 flex items-center">
                             <i class="fas fa-home mr-3"></i>
                             <span>Tableau de bord</span>
                         </a>
                     </li>
                     <li>
-                        <a href="staff-appointments.html" class="block py-3 px-6 hover:bg-red-600 flex items-center">
+                        <a href="rdvPro.html" class="block py-3 px-6 hover:bg-red-600 flex items-center">
                             <i class="fas fa-calendar-alt mr-3"></i>
                             <span>Rendez-vous</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="block py-3 px-6 hover:bg-red-600 flex items-center">
+                        <a href="gestionDonneursPro.html" class="block py-3 px-6 hover:bg-red-600 flex items-center">
                             <i class="fas fa-users mr-3"></i>
                             <span>Gestion donneurs</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="block py-3 px-6 hover:bg-red-600 flex items-center">
-                            <i class="fas fa-chart-line mr-3"></i>
-                            <span>Statistiques</span>
+                        <a href="gestionReceveursPro.html" class="block py-3 px-6 hover:bg-red-600 flex items-center">
+                            <i class="fas fa-users mr-3"></i>
+                            <span>Gestion receveurs</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="block py-3 px-6 hover:bg-red-600 flex items-center">
+                        <a href="matchingPro.html" class="block py-3 px-6 hover:bg-red-600 flex items-center">
                             <i class="fas fa-flask mr-3"></i>
-                            <span>Inventaire</span>
+                            <span>Matching</span>
                         </a>
                     </li>
                     <li>
                         <a href="#" class="block py-3 px-6 hover:bg-red-600 flex items-center">
                             <i class="fas fa-ambulance mr-3"></i>
                             <span>Demandes urgentes</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="block py-3 px-6 hover:bg-red-600 flex items-center">
-                            <i class="fas fa-cog mr-3"></i>
-                            <span>Paramètres</span>
                         </a>
                     </li>
                     <li>
@@ -94,9 +88,7 @@
                     <div class="flex items-center">
                         <div class="relative">
                             <button class="flex items-center text-gray-700 focus:outline-none">
-                                <img src="/api/placeholder/40/40" alt="Photo de profil" class="w-8 h-8 rounded-full mr-2">
                                 <span>Dr. Marie Dupont</span>
-                                <i class="fas fa-chevron-down ml-2 text-xs"></i>
                             </button>
                         </div>
                     </div>
@@ -109,12 +101,6 @@
                     <div>
                         <h3 class="text-gray-700 text-3xl font-semibold">Bienvenue, Dr. Marie!</h3>
                         <p class="text-gray-500">Aperçu des activités du centre de don.</p>
-                    </div>
-                    <div class="mt-4 md:mt-0">
-                        <button class="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg flex items-center">
-                            <i class="fas fa-plus mr-2"></i>
-                            Nouveau rendez-vous
-                        </button>
                     </div>
                 </div>
 
@@ -220,7 +206,6 @@
                     <div class="bg-white rounded-lg shadow-sm p-6 w-full lg:w-2/3">
                         <div class="flex justify-between items-center mb-6">
                             <h4 class="text-lg font-medium text-gray-700">Inventaire de sang</h4>
-                            <a href="#" class="text-red-600 hover:text-red-800 text-sm">Voir l'inventaire complet</a>
                         </div>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                             <!-- Blood Type A+ -->
@@ -403,134 +388,6 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="mt-4 w-full py-2 bg-red-50 text-red-600 hover:bg-red-100 rounded-lg font-medium text-sm">Traiter les demandes</button>
-                    </div>
-                </div>
-
-                <!-- Today's Appointments -->
-                <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
-                    <div class="flex justify-between items-center mb-6">
-                        <h4 class="text-lg font-medium text-gray-700">Rendez-vous du jour</h4>
-                        <a href="#" class="text-red-600 hover:text-red-800 text-sm">Voir tous les rendez-vous</a>
-                    </div>
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full divide-y divide-gray-200">
-                            <thead>
-                                <tr>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Donneur</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Heure</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type de don</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Statut</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody class="bg-white divide-y divide-gray-200">
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="flex items-center">
-                                            <div class="flex-shrink-0 h-10 w-10">
-                                                <img src="/api/placeholder/40/40" alt="Photo du donneur" class="h-10 w-10 rounded-full">
-                                            </div>
-                                            <div class="ml-4">
-                                                <div class="text-sm font-medium text-gray-900">Martin Lefèvre</div>
-                                                <div class="text-sm text-gray-500">A+</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900">09:30</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900">Sang total</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Confirmé</span>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        <button class="text-blue-600 hover:text-blue-800 mr-3">Détails</button>
-                                        <button class="text-red-600 hover:text-red-800">Annuler</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="flex items-center">
-                                            <div class="flex-shrink-0 h-10 w-10">
-                                                <img src="/api/placeholder/40/40" alt="Photo du donneur" class="h-10 w-10 rounded-full">
-                                            </div>
-                                            <div class="ml-4">
-                                                <div class="text-sm font-medium text-gray-900">Sophie Bernard</div>
-                                                <div class="text-sm text-gray-500">O-</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900">10:15</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900">Plaquettes</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Confirmé</span>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        <button class="text-blue-600 hover:text-blue-800 mr-3">Détails</button>
-                                        <button class="text-red-600 hover:text-red-800">Annuler</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="flex items-center">
-                                            <div class="flex-shrink-0 h-10 w-10">
-                                                <img src="/api/placeholder/40/40" alt="Photo du donneur" class="h-10 w-10 rounded-full">
-                                            </div>
-                                            <div class="ml-4">
-                                                <div class="text-sm font-medium text-gray-900">Thomas Girard</div>
-                                                <div class="text-sm text-gray-500">AB+</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900">11:45</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900">Sang total</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">En attente</span>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        <button class="text-blue-600 hover:text-blue-800 mr-3">Détails</button>
-                                        <button class="text-red-600 hover:text-red-800">Annuler</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="flex items-center">
-                                            <div class="flex-shrink-0 h-10 w-10">
-                                                <img src="/api/placeholder/40/40" alt="Photo du donneur" class="h-10 w-10 rounded-full">
-                                            </div>
-                                            <div class="ml-4">
-                                                <div class="text-sm                                                <div class="text-sm font-medium text-gray-900">Julie Moreau</div>
-                                                <div class="text-sm text-gray-500">B+</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900">14:00</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900">Plasma</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Confirmé</span>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        <button class="text-blue-600 hover:text-blue-800 mr-3">Détails</button>
-                                        <button class="text-red-600 hover:text-red-800">Annuler</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
                     </div>
                 </div>
             </div>

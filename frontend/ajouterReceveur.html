@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un Receveur - Système de don de sang</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden max-w-md w-full p-6">
+            <div class="text-center mb-6">
+                <h1 class="text-3xl font-bold text-red-600">DonSang</h1>
+                <p class="text-gray-600 mt-2">Ajouter un Receveur</p>
+            </div>
+
+            <form id="addReceveurForm" class="space-y-4">
+                <div>
+                    <label for="nom" class="block text-sm font-medium text-gray-700">Nom</label>
+                    <input type="text" id="nom" name="nom" required 
+                           class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500">
+                </div>
+
+                <div>
+                    <label for="groupe_sanguin" class="block text-sm font-medium text-gray-700">Groupe sanguin</label>
+                    <select id="groupe_sanguin" name="groupe_sanguin" required 
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500">
+                        <option value="">Sélectionnez le groupe sanguin</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="ville" class="block text-sm font-medium text-gray-700">Ville</label>
+                    <select id="ville" name="ville" required 
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500">
+                        <option value="">Sélectionnez la ville</option>
+                        <option value="Casablanca">Casablanca</option>
+                        <option value="Rabat">Rabat</option>
+                        <option value="Marrakech">Marrakech</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="region" class="block text-sm font-medium text-gray-700">Région</label>
+                    <select id="region" name="region" required 
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500">
+                        <!-- Regions will be populated dynamically based on the selected city -->
+                    </select>
+                </div>
+
+                <div>
+                    <label for="urgence" class="block text-sm font-medium text-gray-700">Urgence</label>
+                    <select id="urgence" name="urgence" required 
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500">
+                        <option value="">Sélectionnez le niveau d'urgence</option>
+                        <option value="Critique">Critique</option>
+                        <option value="Élevée">Élevée</option>
+                        <option value="Modérée">Modérée</option>
+                    </select>
+                </div>
+
+                <!-- Hidden field for 'created_by_user_id', can be populated dynamically on the backend -->
+                <input type="hidden" id="created_by_user_id" name="created_by_user_id" value="">
+
+                <div class="flex items-center">
+                    <button type="submit" id="addReceveurButton" 
+                            class="mt-4 w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                        Ajouter le Receveur
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="assets/js/auth.js"></script>
+
+    <script>
+        // Update regions based on selected city
+        document.getElementById("ville").addEventListener("change", function() {
+            var ville = this.value;
+            var regionSelect = document.getElementById("region");
+            regionSelect.innerHTML = ""; // Clear existing options
+            var regions = [];
+
+            if (ville === "Casablanca") {
+                regions = ["Oulfa", "Maarif", "Sidi Maarouf"];
+            } else if (ville === "Rabat") {
+                regions = ["Agdal", "Hassan", "Souissi"];
+            } else if (ville === "Marrakech") {
+                regions = ["Gueliz", "Ménara", "Hivernage"];
+            }
+
+            // Add the region options dynamically
+            regions.forEach(function(region) {
+                var option = document.createElement("option");
+                option.value = region;
+                option.textContent = region;
+                regionSelect.appendChild(option);
+            });
+        });
+    </script>
+</body>
+</html>

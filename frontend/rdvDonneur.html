@@ -5,6 +5,8 @@
   <title>Prendre rendez-vous - DonSang</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const params = new URLSearchParams(window.location.search);
@@ -77,61 +79,64 @@
     <!-- Sidebar -->
     <!-- Sidebar -->
     <aside class="bg-red-700 text-white w-64 flex-shrink-0 fixed h-full">
-        <div class="p-6">
+      <div class="p-6">
+          <a href="dashboardDonneur.html">
             <h1 class="text-2xl font-bold flex items-center">
                 <i class="fas fa-tint mr-2 blood-drop"></i>
                 DonSang
             </h1>
-            <p class="text-sm text-red-200">Espace Donneur</p>
-        </div>
-        <nav class="mt-6">
-            <ul>
-                <li>
-                    <a href="dashboardDonneur.html" class="block py-3 px-6 hover:bg-red-600 flex items-center">
-                        <i class="fas fa-home-alt mr-3"></i>
-                        <span>Tableau de bord</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="rdvDonneur.html" 
-                     class="block py-3 px-6 bg-red-800 hover:bg-red-600 flex items-center">
-                        <i class="fas fa-calendar-alt mr-3"></i>
-                        <span>Mes rendez-vous</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="historiqueDonneur.html" class="block py-3 px-6 hover:bg-red-600 flex items-center">
-                        <i class="fas fa-history mr-3"></i>
-                        <span>Historique de dons</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="impactDonDonneur.html" class="block py-3 px-6 hover:bg-red-600 flex items-center">
-                        <i class="fas fa-heart mr-3"></i>
-                        <span>Impact de mes dons</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="block py-3 px-6 hover:bg-red-600 flex items-center">
-                        <i class="fas fa-question-circle mr-3"></i>
-                        <span>FAQ</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="block py-3 px-6 hover:bg-red-600 flex items-center">
-                        <i class="fas fa-cog mr-3"></i>
-                        <span>Paramètres</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="login.html" class="block py-3 px-6 hover:bg-red-600 flex items-center text-red-200">
-                        <i class="fas fa-sign-out-alt mr-3"></i>
-                        <span>Déconnexion</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </aside>
+          </a>
+          <p class="text-sm text-red-200">Espace Donneur</p>
+      </div>
+      <nav class="mt-6">
+          <ul>
+              <li>
+                  <a href="dashboardDonneur.html" class="block py-3 px-6 hover:bg-red-600 flex items-center">
+                      <i class="fas fa-home mr-3"></i>
+                      <span>Tableau de bord</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="appointmentDonneur.html" 
+                   class="block py-3 px-6 bg-red-800 hover:bg-red-600 flex items-center">
+                      <i class="fas fa-calendar-alt mr-3"></i>
+                      <span>Mes rendez-vous</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="historiqueDonneur.html" class="block py-3 px-6 hover:bg-red-600 flex items-center">
+                      <i class="fas fa-history mr-3"></i>
+                      <span>Historique de dons</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="impactDonDonneur.html" class="block py-3 px-6 hover:bg-red-600 flex items-center">
+                      <i class="fas fa-heart mr-3"></i>
+                      <span>Impact de mes dons</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="faqDonneur.html" class="block py-3 px-6 hover:bg-red-600 flex items-center">
+                      <i class="fas fa-question-circle mr-3"></i>
+                      <span>FAQ</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="parametreDonneur.html" class="block py-3 px-6 hover:bg-red-600 flex items-center">
+                      <i class="fas fa-cog mr-3"></i>
+                      <span>Paramètres</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="login.html" class="block py-3 px-6 hover:bg-red-600 flex items-center text-red-200">
+                      <i class="fas fa-sign-out-alt mr-3"></i>
+                      <span>Déconnexion</span>
+                  </a>
+              </li>
+          </ul>
+      </nav>
+  </aside>
+
 
     <!-- Main Content -->
     <main class="ml-64 w-full p-8">

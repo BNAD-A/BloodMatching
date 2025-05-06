@@ -5,14 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription - Système de don de sang</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .blood-drop {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+    </style>
 </head>
 <body class="bg-gray-50">
     <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div class="bg-white rounded-lg shadow-lg overflow-hidden max-w-md w-full p-6">
-            <div class="text-center mb-6">
-                <h1 class="text-3xl font-bold text-red-600">DonSang</h1>
-                <p class="text-gray-600 mt-2">Inscription donneur</p>
+            <div class="text-center mb-10">
+                <h1 class="text-4xl font-bold flex items-center justify-center text-red-700">
+                    <i class="fas fa-tint mr-2 blood-drop"></i>
+                    DonSang
+                </h1>
+                <p class="text-gray-600 mt-2">Inscription Donneur</p>
             </div>
 
             <form id="registerForm" class="space-y-4">
@@ -64,20 +77,24 @@
                 </div>
 
                 <div>
+                    <label for="ville" class="block text-sm font-medium text-gray-700">Ville</label>
+                    <select id="ville" name="ville" required 
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500" 
+                            onchange="updateRegions()">
+                        <option value="">Sélectionnez votre ville </option>
+                        <option value="Casablanca">Casablanca</option>
+                        <option value="Rabat">Rabat</option>
+                        <option value="Marrakech">Marrakech</option>
+                    </select>
+                </div>
+
+                <!-- Div pour la région, qui est dynamique -->
+                <div id="regionDiv" style="display:none;">
                     <label for="region" class="block text-sm font-medium text-gray-700">Région</label>
-                    <input type="text" id="region" name="region" required 
-                           class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500">
-                    <p class="mt-1 text-xs text-gray-500">Ou partagez votre position actuelle</p>
-                    <button type="button" id="getLocation" 
-                            class="mt-2 py-1 px-3 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                        Utiliser ma position
-                    </button>
-                    <input type="hidden" id="latitude" name="latitude">
-                    <input type="hidden" id="longitude" name="longitude">
+                    <select id="region" name="region" required 
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500">
+                        <!-- Les options seront ajoutées dynamiquement -->
+                    </select>
                 </div>
 
                 <div class="flex items-center">
@@ -109,33 +126,33 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="assets/js/auth.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Vérifier si l'utilisateur est déjà connecté
-            const token = localStorage.getItem('token');
-            if (token) {
-                window.location.href = 'dashboard.html';
-            }
-            
-            // Géolocalisation
-            document.getElementById('getLocation').addEventListener('click', function() {
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(function(position) {
-                        document.getElementById('latitude').value = position.coords.latitude;
-                        document.getElementById('longitude').value = position.coords.longitude;
-                        document.getElementById('region').value = 'Position détectée';
-                        document.getElementById('region').classList.add('bg-green-50');
-                    }, function(error) {
-                        console.error("Erreur de géolocalisation:", error);
-                        alert("Impossible d'obtenir votre position. Veuillez entrer votre région manuellement.");
-                    });
-                } else {
-                    alert("La géolocalisation n'est pas supportée par votre navigateur.");
+        function updateRegions() {
+            var ville = document.getElementById("ville").value;
+            var regionDiv = document.getElementById("regionDiv");
+            var regionSelect = document.getElementById("region");
+            regionSelect.innerHTML = "";
+            if (ville !== "") {
+                regionDiv.style.display = "block";
+                var regions = [];
+                if (ville === "Casablanca") {
+                    regions = ["Oulfa", "Maarif", "Sidi Maarouf"];
+                } else if (ville === "Rabat") {
+                    regions = ["Agdal", "Hassan", "Souissi"];
+                } else if (ville === "Marrakech") {
+                    regions = ["Gueliz", "Ménara", "Hivernage"];
                 }
-            });
-        });
+
+                regions.forEach(function(region) {
+                    var option = document.createElement("option");
+                    option.value = region;
+                    option.textContent = region;
+                    regionSelect.appendChild(option);
+                });
+            } else {
+                regionDiv.style.display = "none";
+            }
+        }
     </script>
 </body>
 </html>
