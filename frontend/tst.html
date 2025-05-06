@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de bord - Système de don de sang</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .card-hover:hover {
+            transform: translateY(-5px);
+            transition: transform 0.3s ease-in-out;
+        }
+        .blood-drop {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen flex">
+        <!-- Sidebar -->
+        <aside class="bg-red-700 text-white w-64 flex-shrink-0 fixed h-full">
+            <div class="p-6">
+                <h1 class="text-2xl font-bold flex items-center">
+                    <i class="fas fa-tint mr-2 blood-drop"></i>
+                    DonSang
+                </h1>
+                <p class="text-sm text-red-200">Système de gestion des dons</p>
+            </div>
+            <nav class="mt-6">
+                <ul>
+                    <li>
+                        <a href="#" class="block py-3 px-6 bg-red-800 hover:bg-red-600 flex items-center">
+                            <i class="fas fa-home mr-3"></i>
+                            <span>Tableau de bord</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block py-3 px-6 hover:bg-red-600 flex items-center">
+                            <i class="fas fa-calendar-alt mr-3"></i>
+                            <span>Rendez-vous</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block py-3 px-6 hover:bg-red-600 flex items-center donneur-only">
+                            <i class="fas fa-history mr-3"></i>
+                            <span>Historique de dons</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block py-3 px-6 hover:bg-red-600 flex items-center staff-only">
+                            <i class="fas fa-users mr-3"></i>
+                            <span>Gestion donneurs</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block py-3 px-6 hover:bg-red-600 flex items-center staff-only">
+                            <i class="fas fa-chart-line mr-3"></i>
+                            <span>Statistiques</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block py-3 px-6 hover:bg-red-600 flex items-center staff-only">
+                            <i class="fas fa-flask mr-3"></i>
+                            <span>Inventaire</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block py-3 px-6 hover:bg-red-600 flex items-center">
+                            <i class="fas fa-cog mr-3"></i>
+                            <span>Paramètres</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block py-3 px-6 hover:bg-red-600 flex items-center text-red-200">
+                            <i class="fas fa-sign-out-alt mr-3"></i>
+                            <span>Déconnexion</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="ml-64 w-full">
+            <header class="bg-white shadow-sm">
+                <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+                    <h2 class="text-xl font-medium text-gray-800">Tableau de bord</h2>
+                    <div class="flex items-center">
+                        <div class="relative">
+                            <button class="flex items-center text-gray-700 focus:outline-none">
+                                <img src="/api/placeholder/40/40" alt="Photo de profil" class="w-8 h-8 rounded-full mr-2">
+                                <span id="user-name">Marie Dupont</span>
+                                <span id="user-role" class="text-sm text-gray-500 ml-2">(Donneur)</span>
+                                <i class="fas fa-chevron-down ml-2 text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="container mx-auto px-6 py-8">
+                <!-- Dashboard content -->
+                <div class="flex flex-col md:flex-row items-center justify-between mb-8">
+                    <div>
+                        <h3 class="text-gray-700 text-3xl font-semibold" id="welcome-message">Bienvenue, Marie!</h3>
+                        <p class="text-gray-500 donneur-only">Merci pour votre engagement à sauver des vies.</p>
+                        <p class="text-gray-500 staff-only">Aperçu des activités du centre de don.</p>
+                    </div>
+                    <div class="mt-4 md:mt-0">
+                        <button class="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg flex items-center donneur-only">
+                            <i class="fas fa-calendar-plus mr-2"></i>
+                            Planifier un don
+                        </button>
+                        <button class="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg flex items-center staff-only">
+                            <i class="fas fa-plus mr-2"></i>
+                            Nouveau rendez-vous
+                        </button>
+                    </div>
+                </div>
+
+</div>
+                </div>
+
+                <div class="bg-yellow-50 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-6 rounded shadow-sm staff-only">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-exclamation-triangle text-yellow-500"></i>
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-sm">Stock faible pour le groupe sanguin AB-. Actuellement à 20% de la capacité optimale.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Section - Donor View -->
+                <div class="donneur-only">
+                    <h4 class="text-gray-600 font-medium mb-4">Votre profil de donneur</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                        <div class="bg-white rounded-lg shadow-sm p-6 card-hover">
+                            <div class="flex items-center">
+                                <div class="bg-red-100 p-3 rounded-full">
+                                    <i class="fas fa-tint text-red-600"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h5 class="text-gray-500 text-sm">Groupe sanguin</h5>
+                                    <div class="flex items-center">
+                                        <span class="text-2xl font-bold">O+</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-sm p-6 card-hover">
+                            <div class="flex items-center">
+                                <div class="bg-green-100 p-3 rounded-full">
+                                    <i class="fas fa-clipboard-check text-green-600"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h5 class="text-gray-500 text-sm">Total de dons</h5>
+                                    <div class="flex items-center">
+                                        <span class="text-2xl font-bold">7</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-sm p-6 card-hover">
+                            <div class="flex items-center">
+                                <div class="bg-blue-100 p-3 rounded-full">
+                                    <i class="fas fa-calendar-day text-blue-600"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h5 class="text-gray-500 text-sm">Prochain don possible</h5>
+                                    <div class="flex items-center">
+                                        <span class="text-2xl font-bold">15 mai 2025</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4 class="text-gray-600 font-medium mb-4">Prochain rendez-vous</h4>
+                    <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+                            <div>
+                                <p class="text-gray-700 font-medium">Centre de don Saint-Louis</p>
+                                <p class="text-gray-500 text-sm">15 rue des Hôpitaux, 75010 Paris</p>
+                                <div class="flex items-center mt-2">
+                                    <i class="fas fa-calendar text-gray-400 mr-2"></i>
+                                    <span class="text-gray-600">Mardi 20 mai 2025, 14h30</span>
+                                </div>
+                            </div>
+                            <div class="mt-4 md:mt-0 flex">
+                                <button class="bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded mr-2 hover:bg-gray-50">
+                                    <i class="fas fa-edit mr-1"></i> Modifier
+                                </button>
+                                <button class="bg-white border border-red-300 text-red-600 px-4 py-2 rounded hover:bg-red-50">
+                                    <i class="fas fa-times mr-1"></i> Annuler
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Section - Staff View -->
+                <div class="staff-only">
+                    <h4 class="text-gray-600 font-medium mb-4">Aperçu du centre</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+                        <div class="bg-white rounded-lg shadow-sm p-6 card-hover">
+                            <div class="flex items-center">
+                                <div class="bg-blue-100 p-3 rounded-full">
+                                    <i class="fas fa-calendar-check text-blue-600"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h5 class="text-gray-500 text-sm">RDV aujourd'hui</h5>
+                                    <div class="flex items-center">
+                                        <span class="text-2xl font-bold">24</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-sm p-6 card-hover">
+                            <div class="flex items-center">
+                                <div class="bg-green-100 p-3 rounded-full">
+                                    <i class="fas fa-user-check text-green-600"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h5 class="text-gray-500 text-sm">Donneurs présents</h5>
+                                    <div class="flex items-center">
+                                        <span class="text-2xl font-bold">12</span>
+                                        <span class="text-sm text-green-500 ml-2">+2</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-sm p-6 card-hover">
+                            <div class="flex items-center">
+                                <div class="bg-purple-100 p-3 rounded-full">
+                                    <i class="fas fa-tint text-purple-600"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h5 class="text-gray-500 text-sm">Dons collectés</h5>
+                                    <div class="flex items-center">
+                                        <span class="text-2xl font-bold">8</span>
+                                        <span class="text-sm text-gray-500 ml-2">/ 24</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-sm p-6 card-hover">
+                            <div class="flex items-center">
+                                <div class="bg-red-100 p-3 rounded-full">
+                                    <i class="fas fa-exclamation-circle text-red-600"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h5 class="text-gray-500 text-sm">Dons refusés</h5>
+                                    <div class="flex items-center">
+                                        <span class="text-2xl font-bold">2</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4 class="text-gray-600 font-medium mb-4">Inventaire des groupes sanguins</h4>
+                    <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-lg font-medium">A+</span>
+                                    <span class="text-sm text-gray-500">75%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5 mt-2">
+                                    <div class="bg-green-500 h-2.5 rounded-full" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-lg font-medium">A-</span>
+                                    <span class="text-sm text-gray-500">45%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5 mt-2">
+                                    <div class="bg-yellow-500 h-2.5 rounded-full" style="width: 45%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-lg font-medium">B+</span>
+                                    <span class="text-sm text-gray-500">60%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5 mt-2">
+                                    <div class="bg-green-500 h-2.5 rounded-full" style="width: 60%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-lg font-medium">B-</span>
+                                    <span class="text-sm text-gray-500">30%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5 mt-2">
+                                    <div class="bg-yellow-500 h-2.5 rounded-full" style="width: 30%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-lg font-medium">AB+</span>
+                                    <span class="text-sm text-gray-500">90%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5 mt-2">
+                                    <div class="bg-green-500 h-2.5 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-lg font-medium">AB-</span>
+                                    <span class="text-sm text-gray-500">20%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5 mt-2">
+                                    <div class="bg-red-500 h-2.5 rounded-full" style="width: 20%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-lg font-medium">O+</span>
+                                    <span class="text-sm text-gray-500">35%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5 mt-2">
+                                    <div class="bg-yellow-500 h-2.5 rounded-full" style="width: 35%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-lg font-medium">O-</span>
+                                    <span class="text-sm text-gray-500">50%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5 mt-2">
+                                    <div class="bg-yellow-500 h-2.5 rounded-full" style="width: 50%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent appointments -->
+                <h4 class="text-gray-600 font-medium mb-4">Rendez-vous récents</h4>
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden mb-6">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Donneur</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider staff-only">Statut</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Centre</th>
+                                <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <img src="/api/placeholder/32/32" alt="Photo donneur" class="h-8 w-8 rounded-full staff-only">
+                                        <div class="ml-0 md:ml-4">
+                                            <div class="text-sm font-medium text-gray-900 donneur-only">Vous</div>
+                                            <div class="text-sm font-medium text-gray-900 staff-only">Marie Dupont</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">20/05/2025</div>
+                                    <div class="text-sm text-gray-500">14:30</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                                        Sang total
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap staff-only">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                        Confirmé
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    Saint-Louis
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <a href="#" class="text-blue-600 hover:text-blue-900">Détails</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <img src="/api/placeholder/32/32" alt="Photo donneur" class="h-8 w-8 rounded-full staff-only">
+                                        <div class="ml-0 md:ml-4">
+                                            <div class="text-sm font-medium text-gray-900 staff-only">Thomas Bernard</div>
+                                            <div class="text-sm font-medium text-gray-900 donneur-only">Vous</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">15/04/2025</div>
+                                    <div class="text-sm text-gray-500">10:00</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-purple-100 text-purple-800">
+                                        Plasma
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap staff-only">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
+                                        Complété
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    Saint-Antoine
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <a href="#" class="text-blue-600 hover:text-blue-900">Détails</a>
+                                </td>
+                            </tr>
+                            <tr class="staff-only">
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <img src="/api/placeholder/32/32" alt="Photo donneur" class="h-8 w-8 rounded-full">
+                                        <div class="ml-4">
+                                            <div class="text-sm font-medium text-gray-900">Sophie Martin</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">06/05/2025</div>
+                                    <div class="text-sm text-gray-500">15:15</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                                        Sang total
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                                        Refusé
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    Saint-Louis
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <a href="#" class="text-blue-600 hover:text-blue-900">Détails</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Script pour basculer entre les vues donneur et personnel médical
+        document.addEventListener('DOMContentLoaded', function() {
+            // Définir le rôle par défaut (pour la démonstration)
+            let userRole = 'donneur'; // 'donneur' ou 'staff'
+            
+            // Fonction pour mettre à jour l'interface selon le rôle
+            function updateInterface(role) {
+                // Mettre à jour l'affichage des éléments selon le rôle
+                document.querySelectorAll('.donneur-only').forEach(el => {
+                    el.style.display = (role === 'donneur') ? 'block' : 'none';
+                });
+                
+                document.querySelectorAll('.staff-only').forEach(el => {
+                    el.style.display = (role === 'staff') ? 'block' : 'none';
+                });
+                
+                // Mettre à jour l'affichage du rôle dans l'en-tête
+                document.getElementById('user-role').textContent = 
+                    (role === 'donneur') ? '(Donneur)' : '(Personnel médical)';
+                
+                // Mettre à jour le message de bienvenue
+                document.getElementById('welcome-message').textContent = 
+                    (role === 'donneur') ? 'Bienvenue, Marie!' : 'Bienvenue, Dr. Marie!';
+            }
+            
+            // Initialiser l'interface
+            updateInterface(userRole);
+            
+            // Ajouter un bouton temporaire pour basculer entre les rôles (pour la démonstration)
+            const toggleButton = document.createElement('button');
+            toggleButton.textContent = 'Changer de rôle (démo)';
+            toggleButton.className = 'fixed bottom-4 right-4 bg-gray-800 text-white px-4 py-2 rounded-lg shadow-lg';
+            toggleButton.addEventListener('click', function() {
+                userRole = (userRole === 'donneur') ? 'staff' : 'donneur';
+                updateInterface(userRole);
+            });
+            document.body.appendChild(toggleButton);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historique des dons - Système de don de sang</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .card-hover:hover {
+            transform: translateY(-5px);
+            transition: transform 0.3s ease-in-out;
+        }
+        .blood-drop {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen flex">
+        <!-- Sidebar -->
+        <aside class="bg-red-700 text-white w-64 flex-shrink-0 fixed h-full">
+            <div class="p-6">
+                <h1 class="text-2xl font-bold flex items-center">
+                    <i class="fas fa-tint mr-2 blood-drop"></i>
+                    DonSang
+                </h1>
+                <p class="text-sm text-red-200">Espace Donneur</p>
+            </div>
+            <nav class="mt-6">
+                <ul>
+                    <li>
+                        <a href="dashboardDonneur.html" class="block py-3 px-6 hover:bg-red-600 flex items-center">
+                            <i class="fas fa-home mr-3"></i>
+                            <span>Tableau de bord</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="appointmentDonneur.html" class="block py-3 px-6 hover:bg-red-600 flex items-center">
+                            <i class="fas fa-calendar-alt mr-3"></i>
+                            <span>Mes rendez-vous</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="historiqueDons.html" class="block py-3 px-6 bg-red-800 hover:bg-red-600 flex items-center">
+                            <i class="fas fa-history mr-3"></i>
+                            <span>Historique de dons</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="impactDonDonneur.html" class="block py-3 px-6 hover:bg-red-600 flex items-center">
+                            <i class="fas fa-heart mr-3"></i>
+                            <span>Impact de mes dons</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="faqDonneur.html" class="block py-3 px-6 hover:bg-red-600 flex items-center">
+                            <i class="fas fa-question-circle mr-3"></i>
+                            <span>FAQ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="parametres.html" class="block py-3 px-6 hover:bg-red-600 flex items-center">
+                            <i class="fas fa-cog mr-3"></i>
+                            <span>Paramètres</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="login.html" class="block py-3 px-6 hover:bg-red-600 flex items-center text-red-200">
+                            <i class="fas fa-sign-out-alt mr-3"></i>
+                            <span>Déconnexion</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="ml-64 w-full">
+            <header class="bg-white shadow-sm">
+                <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+                    <h2 class="text-xl font-medium text-gray-800">Historique de dons</h2>
+                    <div class="flex items-center">
+                        <div class="relative">
+                            <button class="flex items-center text-gray-700 focus:outline-none">
+                                <img src="/api/placeholder/40/40" alt="Photo de profil" class="w-8 h-8 rounded-full mr-2">
+                                <span>Marie Dupont</span>
+                                <i class="fas fa-chevron-down ml-2 text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="container mx-auto px-6 py-8">
+                <!-- Dashboard content -->
+                <div class="mb-8">
+                    <h3 class="text-gray-700 text-3xl font-semibold mb-2">Historique complet de vos dons</h3>
+                    <p class="text-gray-500">Consultez l'ensemble de vos contributions et leur impact sur la santé publique.</p>
+                </div>
+
+                <!-- Stats Section -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-white rounded-lg shadow-sm p-6 card-hover">
+                        <div class="flex items-center">
+                            <div class="bg-red-100 p-3 rounded-full">
+                                <i class="fas fa-tint text-red-600"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h5 class="text-gray-500 text-sm">Total de dons</h5>
+                                <div class="flex items-center">
+                                    <span class="text-2xl font-bold">7</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm p-6 card-hover">
+                        <div class="flex items-center">
+                            <div class="bg-green-100 p-3 rounded-full">
+                                <i class="fas fa-hand-holding-heart text-green-600"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h5 class="text-gray-500 text-sm">Dons de sang total</h5>
+                                <div class="flex items-center">
+                                    <span class="text-2xl font-bold">5</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm p-6 card-hover">
+                        <div class="flex items-center">
+                            <div class="bg-purple-100 p-3 rounded-full">
+                                <i class="fas fa-flask text-purple-600"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h5 class="text-gray-500 text-sm">Dons de plasma</h5>
+                                <div class="flex items-center">
+                                    <span class="text-2xl font-bold">2</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm p-6 card-hover">
+                        <div class="flex items-center">
+                            <div class="bg-blue-100 p-3 rounded-full">
+                                <i class="fas fa-calendar-alt text-blue-600"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h5 class="text-gray-500 text-sm">Premier don</h5>
+                                <div class="flex items-center">
+                                    <span class="text-lg font-bold">12/03/2023</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filter Section -->
+                <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+                    <h4 class="text-gray-700 font-medium mb-4">Filtrer mes dons</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Type de don</label>
+                            <select class="block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring focus:ring-red-500 focus:ring-opacity-50">
+                                <option value="">Tous les types</option>
+                                <option value="sang">Sang total</option>
+                                <option value="plasma">Plasma</option>
+                                <option value="plaquettes">Plaquettes</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Centre de don</label>
+                            <select class="block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring focus:ring-red-500 focus:ring-opacity-50">
+                                <option value="">Tous les centres</option>
+                                <option value="saint-louis">Saint-Louis</option>
+                                <option value="saint-antoine">Saint-Antoine</option>
+                                <option value="pitie">Pitié-Salpêtrière</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Année</label>
+                            <select class="block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring focus:ring-red-500 focus:ring-opacity-50">
+                                <option value="">Toutes les années</option>
+                                <option value="2025">2025</option>
+                                <option value="2024">2024</option>
+                                <option value="2023">2023</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex justify-end">
+                        <button class="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded">
+                            Appliquer les filtres
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Donations Table -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden mb-6">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Centre</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Durée</th>
+                                <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">15/04/2025</div>
+                                    <div class="text-sm text-gray-500">10:00</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-purple-100 text-purple-800">
+                                        Plasma
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    Saint-Antoine
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    45 minutes
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <a href="#" class="text-blue-600 hover:text-blue-900">Détails</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">10/02/2025</div>
+                                    <div class="text-sm text-gray-500">14:15</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                                        Sang total
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    Saint-Louis
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    30 minutes
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <a href="#" class="text-blue-600 hover:text-blue-900">Détails</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">05/11/2024</div>
+                                    <div class="text-sm text-gray-500">09:30</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                                        Sang total
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    Pitié-Salpêtrière
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    35 minutes
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <a href="#" class="text-blue-600 hover:text-blue-900">Détails</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">20/08/2024</div>
+                                    <div class="text-sm text-gray-500">11:00</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-purple-100 text-purple-800">
+                                        Plasma
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    Saint-Antoine
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    50 minutes
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <a href="#" class="text-blue-600 hover:text-blue-900">Détails</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">15/06/2024</div>
+                                    <div class="text-sm text-gray-500">16:45</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                                        Sang total
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    Saint-Louis
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    30 minutes
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <a href="#" class="text-blue-600 hover:text-blue-900">Détails</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">02/03/2024</div>
+                                    <div class="text-sm text-gray-500">13:15</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                                        Sang total
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    Pitié-Salpêtrière
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    35 minutes
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <a href="#" class="text-blue-600 hover:text-blue-900">Détails</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">12/03/2023</div>
+                                    <div class="text-sm text-gray-500">10:30</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                                        Sang total
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    Saint-Louis
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    30 minutes
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <a href="#" class="text-blue-600 hover:text-blue-900">Détails</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

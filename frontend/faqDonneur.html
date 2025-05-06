@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Système de don de sang</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .card-hover:hover {
+            transform: translateY(-5px);
+            transition: transform 0.3s ease-in-out;
+        }
+        .blood-drop {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .accordion-content.active {
+            max-height: 500px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen flex">
+        <!-- Sidebar -->
+        <aside class="bg-red-700 text-white w-64 flex-shrink-0 fixed h-full">
+            <div class="p-6">
+                <h1 class="text-2xl font-bold flex items-center">
+                    <i class="fas fa-tint mr-2 blood-drop"></i>
+                    DonSang
+                </h1>
+                <p class="text-sm text-red-200">Espace Donneur</p>
+            </div>
+            <nav class="mt-6">
+                <ul>
+                    <li>
+                        <a href="dashboardDonneur.html" class="block py-3 px-6 hover:bg-red-600 flex items-center">
+                            <i class="fas fa-home mr-3"></i>
+                            <span>Tableau de bord</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="appointmentDonneur.html" class="block py-3 px-6 hover:bg-red-600 flex items-center">
+                            <i class="fas fa-calendar-alt mr-3"></i>
+                            <span>Mes rendez-vous</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="historiqueDons.html" class="block py-3 px-6 hover:bg-red-600 flex items-center">
+                            <i class="fas fa-history mr-3"></i>
+                            <span>Historique de dons</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="impactDons.html" class="block py-3 px-6 hover:bg-red-600 flex items-center">
+                            <i class="fas fa-heart mr-3"></i>
+                            <span>Impact de mes dons</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="faqDonneur.html" class="block py-3 px-6 bg-red-800 hover:bg-red-600 flex items-center">
+                            <i class="fas fa-question-circle mr-3"></i>
+                            <span>FAQ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="parametres.html" class="block py-3 px-6 hover:bg-red-600 flex items-center">
+                            <i class="fas fa-cog mr-3"></i>
+                            <span>Paramètres</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="login.html" class="block py-3 px-6 hover:bg-red-600 flex items-center text-red-200">
+                            <i class="fas fa-sign-out-alt mr-3"></i>
+                            <span>Déconnexion</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="ml-64 w-full">
+            <header class="bg-white shadow-sm">
+                <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+                    <h2 class="text-xl font-medium text-gray-800">Foire aux questions</h2>
+                    <div class="flex items-center">
+                        <div class="relative">
+                            <button class="flex items-center text-gray-700 focus:outline-none">
+                                <img src="/api/placeholder/40/40" alt="Photo de profil" class="w-8 h-8 rounded-full mr-2">
+                                <span>Marie Dupont</span>
+                                <i class="fas fa-chevron-down ml-2 text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="container mx-auto px-6 py-8">
+                <!-- FAQ Header -->
+                <div class="mb-8">
+                    <h3 class="text-gray-700 text-3xl font-semibold mb-2">Questions fréquentes</h3>
+                    <p class="text-gray-500">Trouvez les réponses à vos questions concernant le don de sang et notre plateforme.</p>
+                </div>
+
+
+                <!-- FAQ Accordions -->
+                <div class="space-y-4">
+                    <!-- Question 1 -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                        <button class="accordion-btn w-full px-6 py-4 text-left flex justify-between items-center">
+                            <span class="font-medium text-gray-800">Qui peut donner son sang ?</span>
+                            <i class="fas fa-chevron-down text-red-600 transition-transform duration-300"></i>
+                        </button>
+                        <div class="accordion-content px-6 pb-4">
+                            <p class="text-gray-600">Pour donner son sang, il faut :</p>
+                            <ul class="list-disc ml-6 mt-2 text-gray-600">
+                                <li>Être âgé de 18 à 70 ans</li>
+                                <li>Peser au moins 50 kg</li>
+                                <li>Être en bonne santé</li>
+                                <li>Présenter une pièce d'identité</li>
+                                <li>Ne pas être à jeun</li>
+                            </ul>
+                            <p class="mt-2 text-gray-600">Certaines situations peuvent entraîner un ajournement temporaire ou définitif du don : voyage récent dans certains pays, traitement médical en cours, intervention chirurgicale récente, grossesse, etc.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                        <button class="accordion-btn w-full px-6 py-4 text-left flex justify-between items-center">
+                            <span class="font-medium text-gray-800">À quelle fréquence puis-je donner mon sang ?</span>
+                            <i class="fas fa-chevron-down text-red-600 transition-transform duration-300"></i>
+                        </button>
+                        <div class="accordion-content px-6 pb-4">
+                            <p class="text-gray-600">La fréquence des dons dépend du type de don :</p>
+                            <ul class="list-disc ml-6 mt-2 text-gray-600">
+                                <li><strong>Don de sang total</strong> : 4 fois par an pour les femmes, 6 fois par an pour les hommes, avec un délai minimum de 8 semaines entre chaque don.</li>
+                                <li><strong>Don de plasma</strong> : jusqu'à 24 fois par an, avec un délai minimum de 2 semaines entre chaque don.</li>
+                                <li><strong>Don de plaquettes</strong> : jusqu'à 12 fois par an, avec un délai minimum de 4 semaines entre chaque don.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                        <button class="accordion-btn w-full px-6 py-4 text-left flex justify-between items-center">
+                            <span class="font-medium text-gray-800">Comment se déroule un don de sang ?</span>
+                            <i class="fas fa-chevron-down text-red-600 transition-transform duration-300"></i>
+                        </button>
+                        <div class="accordion-content px-6 pb-4">
+                            <p class="text-gray-600">Le don de sang se déroule en 4 étapes :</p>
+                            <ol class="list-decimal ml-6 mt-2 text-gray-600">
+                                <li><strong>Accueil et inscription</strong> : Enregistrement administratif avec présentation d'une pièce d'identité.</li>
+                                <li><strong>Entretien prédon</strong> : Un entretien confidentiel avec un médecin ou un(e) infirmier(ère) pour s'assurer que le don ne présente pas de risque ni pour le donneur, ni pour le receveur.</li>
+                                <li><strong>Prélèvement</strong> : Le prélèvement dure environ 10 minutes pour un don de sang total. Vous êtes installé(e) confortablement sur un fauteuil ou un lit.</li>
+                                <li><strong>Repos et collation</strong> : Après le don, une collation vous est offerte. Il est important de s'hydrater et de se restaurer après un don.</li>
+                            </ol>
+                            <p class="mt-2 text-gray-600">La durée totale est d'environ 45 minutes, dont 10 minutes pour le prélèvement lui-même.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 4 -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                        <button class="accordion-btn w-full px-6 py-4 text-left flex justify-between items-center">
+                            <span class="font-medium text-gray-800">Quels sont les différents types de don ?</span>
+                            <i class="fas fa-chevron-down text-red-600 transition-transform duration-300"></i>
+                        </button>
+                        <div class="accordion-content px-6 pb-4">
+                            <p class="text-gray-600">Il existe plusieurs types de don :</p>
+                            <ul class="list-disc ml-6 mt-2 text-gray-600">
+                                <li><strong>Don de sang total</strong> : Le plus courant. On prélève environ 470 ml de sang, qui sera ensuite séparé en différents composants.</li>
+                                <li><strong>Don de plasma</strong> : Le plasma est la partie liquide du sang. Ce don dure environ 45 minutes.</li>
+                                <li><strong>Don de plaquettes</strong> : Les plaquettes sont essentielles à la coagulation du sang. Ce don dure environ 90 minutes.</li>
+                                <li><strong>Don de moelle osseuse</strong> : Ce don spécifique n'est pas réalisé lors des collectes habituelles et nécessite une inscription préalable sur le registre des donneurs.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Question 5 -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                        <button class="accordion-btn w-full px-6 py-4 text-left flex justify-between items-center">
+                            <span class="font-medium text-gray-800">Comment me préparer avant un don de sang ?</span>
+                            <i class="fas fa-chevron-down text-red-600 transition-transform duration-300"></i>
+                        </button>
+                        <div class="accordion-content px-6 pb-4">
+                            <p class="text-gray-600">Pour bien vous préparer à un don de sang :</p>
+                            <ul class="list-disc ml-6 mt-2 text-gray-600">
+                                <li>Mangez normalement avant le don (ne venez pas à jeun)</li>
+                                <li>Hydratez-vous bien avant, pendant et après le don</li>
+                                <li>Évitez les efforts physiques intenses le jour du don</li>
+                                <li>Dormez suffisamment la veille</li>
+                                <li>Évitez les aliments trop gras avant le don</li>
+                                <li>Prenez votre pièce d'identité</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Question 6 -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                        <button class="accordion-btn w-full px-6 py-4 text-left flex justify-between items-center">
+                            <span class="font-medium text-gray-800">Que devient mon sang après le don ?</span>
+                            <i class="fas fa-chevron-down text-red-600 transition-transform duration-300"></i>
+                        </button>
+                        <div class="accordion-content px-6 pb-4">
+                            <p class="text-gray-600">Après votre don, votre sang suit un parcours précis :</p>
+                            <ol class="list-decimal ml-6 mt-2 text-gray-600">
+                                <li><strong>Qualification biologique</strong> : Des tests sont réalisés pour déterminer votre groupe sanguin et vérifier l'absence de maladies transmissibles.</li>
+                                <li><strong>Préparation des produits sanguins</strong> : Le sang total est séparé en trois composants : globules rouges, plasma et plaquettes.</li>
+                                <li><strong>Distribution</strong> : Les produits sanguins sont distribués aux établissements de santé selon leurs besoins.</li>
+                                <li><strong>Transfusion</strong> : Les produits sanguins sont transfusés aux patients selon leurs besoins spécifiques.</li>
+                            </ol>
+                            <p class="mt-2 text-gray-600">Les globules rouges se conservent 42 jours, le plasma peut être congelé pendant 1 an, et les plaquettes doivent être utilisées dans les 7 jours.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 7 -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                        <button class="accordion-btn w-full px-6 py-4 text-left flex justify-between items-center">
+                            <span class="font-medium text-gray-800">Comment utiliser l'application DonSang ?</span>
+                            <i class="fas fa-chevron-down text-red-600 transition-transform duration-300"></i>
+                        </button>
+                        <div class="accordion-content px-6 pb-4">
+                            <p class="text-gray-600">Notre application DonSang vous permet de :</p>
+                            <ul class="list-disc ml-6 mt-2 text-gray-600">
+                                <li>Prendre rendez-vous pour un don en quelques clics</li>
+                                <li>Consulter votre historique de dons</li>
+                                <li>Recevoir des notifications pour vos prochains dons possibles</li>
+                                <li>Visualiser l'impact de vos dons</li>
+                                <li>Trouver les centres de don près de chez vous</li>
+                                <li>Recevoir vos résultats d'analyses sanguines après chaque don</li>
+                            </ul>
+                            <p class="mt-2 text-gray-600">Pour accéder à toutes les fonctionnalités, assurez-vous de créer un compte et de renseigner vos informations personnelles.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Section -->
+                <div class="mt-12 bg-red-50 border border-red-100 rounded-lg p-8">
+                    <div class="text-center mb-6">
+                        <h4 class="text-xl font-semibold text-red-700">Vous n'avez pas trouvé la réponse à votre question ?</h4>
+                        <p class="text-gray-600 mt-2">Contactez notre équipe pour obtenir plus d'informations.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <a href="tel:0800109900" class="bg-white p-4 rounded-lg shadow-sm flex flex-col items-center hover:shadow-md transition duration-300">
+                            <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-3">
+                                <i class="fas fa-phone text-red-600"></i>
+                            </div>
+                            <h5 class="font-medium text-gray-800">Par téléphone</h5>
+                            <p class="text-gray-600 text-sm mt-1">0 800 109 900</p>
+                            <p class="text-gray-500 text-xs mt-1">Service & appel gratuits</p>
+                        </a>
+                        <a href="mailto:contact@donsang.fr" class="bg-white p-4 rounded-lg shadow-sm flex flex-col items-center hover:shadow-md transition duration-300">
+                            <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-3">
+                                <i class="fas fa-envelope text-red-600"></i>
+                            </div>
+                            <h5 class="font-medium text-gray-800">Par email</h5>
+                            <p class="text-gray-600 text-sm mt-1">contact@donsang.fr</p>
+                            <p class="text-gray-500 text-xs mt-1">Réponse sous 48h</p>
+                        </a>
+                        <a href="#" class="bg-white p-4 rounded-lg shadow-sm flex flex-col items-center hover:shadow-md transition duration-300">
+                            <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-3">
+                                <i class="fas fa-comments text-red-600"></i>
+                            </div>
+                            <h5 class="font-medium text-gray-800">Chat en direct</h5>
+                            <p class="text-gray-600 text-sm mt-1">Lun-Ven, 9h-18h</p>
+                            <p class="text-gray-500 text-xs mt-1">Réponse immédiate</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <footer class="bg-white border-t mt-12 py-6">
+                <div class="container mx-auto px-6">
+                    <div class="flex flex-col md:flex-row justify-between items-center">
+                        <div class="text-gray-500 text-sm mb-4 md:mb-0">
+                            &copy; 2025 DonSang - Tous droits réservés
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-400 hover:text-gray-600">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-gray-600">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-gray-600">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        // Accordion functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const accordionButtons = document.querySelectorAll('.accordion-btn');
+            
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    const icon = this.querySelector('i');
+                    
+                    content.classList.toggle('active');
+                    icon.classList.toggle('transform');
+                    icon.classList.toggle('rotate-180');
+                    
+                    // Open first accordion by default
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+            });
+            
+            // Open first accordion by default
+            if (accordionButtons.length > 0) {
+                accordionButtons[0].click();
+            }
+        });
+    </script>
+</body>
+</html>

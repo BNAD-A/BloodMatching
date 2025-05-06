@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tableau de bord - Don de sang</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    .card-hover:hover {
+      transform: translateY(-5px);
+      transition: transform 0.3s ease-in-out;
+    }
+    .blood-drop {
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { opacity: 0.7; }
+      50% { opacity: 1; }
+      100% { opacity: 0.7; }
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <div class="min-h-screen flex">
+    <!-- Sidebar -->
+    <aside class="bg-red-700 text-white w-64 flex-shrink-0 fixed h-full">
+      <div class="p-6">
+        <h1 class="text-2xl font-bold flex items-center">
+          <i class="fas fa-tint mr-2 blood-drop"></i> DonSang
+        </h1>
+        <p class="text-sm text-red-200">Système de gestion des dons</p>
+      </div>
+      <nav class="mt-6">
+        <ul>
+          <li><a href="#" class="block py-3 px-6 bg-red-800 hover:bg-red-600 flex items-center"><i class="fas fa-home mr-3"></i><span>Tableau de bord</span></a></li>
+          <li><a href="#" class="block py-3 px-6 hover:bg-red-600 flex items-center"><i class="fas fa-calendar-alt mr-3"></i><span>Rendez-vous</span></a></li>
+          <li class="donneur-only"><a href="#" class="block py-3 px-6 hover:bg-red-600 flex items-center"><i class="fas fa-history mr-3"></i><span>Historique de dons</span></a></li>
+          <li class="staff-only"><a href="#" class="block py-3 px-6 hover:bg-red-600 flex items-center"><i class="fas fa-users mr-3"></i><span>Gestion donneurs</span></a></li>
+          <li class="staff-only"><a href="#" class="block py-3 px-6 hover:bg-red-600 flex items-center"><i class="fas fa-chart-line mr-3"></i><span>Statistiques</span></a></li>
+          <li class="staff-only"><a href="#" class="block py-3 px-6 hover:bg-red-600 flex items-center"><i class="fas fa-flask mr-3"></i><span>Inventaire</span></a></li>
+          <li><a href="#" class="block py-3 px-6 hover:bg-red-600 flex items-center"><i class="fas fa-cog mr-3"></i><span>Paramètres</span></a></li>
+          <li><a href="#" class="block py-3 px-6 hover:bg-red-600 flex items-center text-red-200"><i class="fas fa-sign-out-alt mr-3"></i><span>Déconnexion</span></a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="ml-64 w-full">
+      <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+          <h2 class="text-xl font-medium text-gray-800">Tableau de bord</h2>
+          <div class="flex items-center">
+            <div class="relative">
+              <button class="flex items-center text-gray-700 focus:outline-none">
+                <img src="/api/placeholder/40/40" alt="Photo de profil" class="w-8 h-8 rounded-full mr-2" />
+                <span id="user-name">Marie Dupont</span>
+                <span id="user-role" class="text-sm text-gray-500 ml-2">(Donneur)</span>
+                <i class="fas fa-chevron-down ml-2 text-xs"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="container mx-auto px-6 py-8">
+        <!-- Contenu dynamique -->
+        <section class="donneur-only" id="donor-section">
+          <h3 class="text-3xl font-semibold text-gray-700">Bienvenue, Marie!</h3>
+          <p class="text-gray-500">Merci pour votre engagement à sauver des vies.</p>
+
+          <div class="bg-blue-50 border-l-4 border-blue-500 text-blue-700 p-4 my-6 rounded shadow-sm">
+            <p class="text-sm"><i class="fas fa-info-circle mr-2"></i>Votre groupe sanguin O+ est très demandé.</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <div class="bg-white rounded-lg shadow-sm p-6 card-hover">
+              <i class="fas fa-tint text-red-600"></i>
+              <p class="mt-2 text-gray-700 font-bold text-xl">Groupe sanguin : O+</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-sm p-6 card-hover">
+              <i class="fas fa-clipboard-check text-green-600"></i>
+              <p class="mt-2 text-gray-700 font-bold text-xl">Total de dons : 7</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-sm p-6 card-hover">
+              <i class="fas fa-calendar-day text-blue-600"></i>
+              <p class="mt-2 text-gray-700 font-bold text-xl">Prochain don : 15 mai 2025</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="staff-only" id="staff-section">
+          <h3 class="text-3xl font-semibold text-gray-700">Bienvenue, Dr. Marie!</h3>
+          <p class="text-gray-500">Aperçu des activités du centre de don.</p>
+
+          <div class="bg-yellow-50 border-l-4 border-yellow-500 text-yellow-700 p-4 my-6 rounded shadow-sm">
+            <p class="text-sm"><i class="fas fa-exclamation-triangle mr-2"></i>Stock faible pour AB- : 20%</p>
+          </div>
+
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
+            <div class="bg-white p-4 rounded shadow-sm text-center">
+              <i class="fas fa-calendar-check text-blue-600 text-2xl"></i>
+              <p class="mt-2 text-gray-700 font-bold text-xl">24 RDV</p>
+            </div>
+            <div class="bg-white p-4 rounded shadow-sm text-center">
+              <i class="fas fa-user-check text-green-600 text-2xl"></i>
+              <p class="mt-2 text-gray-700 font-bold text-xl">12 présents</p>
+            </div>
+            <div class="bg-white p-4 rounded shadow-sm text-center">
+              <i class="fas fa-tint text-purple-600 text-2xl"></i>
+              <p class="mt-2 text-gray-700 font-bold text-xl">8 dons</p>
+            </div>
+            <div class="bg-white p-4 rounded shadow-sm text-center">
+              <i class="fas fa-times-circle text-red-600 text-2xl"></i>
+              <p class="mt-2 text-gray-700 font-bold text-xl">2 refusés</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      let userRole = 'donneur'; // ou 'staff'
+
+      function updateInterface(role) {
+        document.querySelectorAll('.donneur-only').forEach(el => {
+          el.style.display = (role === 'donneur') ? 'block' : 'none';
+        });
+
+        document.querySelectorAll('.staff-only').forEach(el => {
+          el.style.display = (role === 'staff') ? 'block' : 'none';
+        });
+
+        document.getElementById('user-role').textContent = 
+          (role === 'donneur') ? '(Donneur)' : '(Personnel médical)';
+        document.getElementById('user-name').textContent = 
+          (role === 'donneur') ? 'Marie Dupont' : 'Dr. Marie';
+      }
+
+      updateInterface(userRole);
+
+      // Démo : bouton de bascule de rôle
+      const btn = document.createElement('button');
+      btn.textContent = 'Changer de rôle (démo)';
+      btn.className = 'fixed bottom-4 right-4 bg-gray-800 text-white px-4 py-2 rounded shadow-lg';
+      btn.addEventListener('click', () => {
+        userRole = (userRole === 'donneur') ? 'staff' : 'donneur';
+        updateInterface(userRole);
+      });
+      document.body.appendChild(btn);
+    });
+  </script>
+</body>
+</html>
