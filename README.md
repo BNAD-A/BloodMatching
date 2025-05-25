@@ -66,8 +66,6 @@ Pour découvrir l'application :
 
 ---
 
----
-
 ## Genèse Universitaire, Ambition Nationale 🎓🇲🇦
 
 DonSang a pris racine au sein des murs de l'université, comme un projet étudiant animé par une vision : celle de moderniser et de dynamiser le don de sang au Maroc. Cette initiative est le fruit de la collaboration entre deux parcours académiques :
